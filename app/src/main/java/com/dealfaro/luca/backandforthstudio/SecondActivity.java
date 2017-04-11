@@ -1,5 +1,6 @@
 package com.dealfaro.luca.backandforthstudio;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,14 @@ public class SecondActivity extends AppCompatActivity {
         tv2.setText(appInfo.sharedString);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
 
     public void clickBack(View V) {
         Intent intent = new Intent(this, MainActivity.class);

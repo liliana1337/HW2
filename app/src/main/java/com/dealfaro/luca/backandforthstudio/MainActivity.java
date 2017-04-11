@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
         String myText = settings.getString(MainActivity.PREF_STRING_1, "");
         EditText edv = (EditText) findViewById(R.id.editText1);
         edv.setText(myText);
+
+        EditText edv2 = (EditText) findViewById(R.id.editText2);
+        if (appInfo.sharedString != null) {
+            edv2.setText(appInfo.sharedString);
+        }
     }
 
     public void goOther(View V) {
@@ -42,9 +47,15 @@ public class MainActivity extends AppCompatActivity {
         // The second string we store it in the singleton class.
         EditText edv2 = (EditText) findViewById(R.id.editText2);
         String text2 = edv2.getText().toString();
-        appInfo.sharedString = text2;
+        appInfo.setColor(this, text2);
 
         // Go to second activity
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
     }
