@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         // The second string we store it in the singleton class.
         EditText edv2 = (EditText) findViewById(R.id.editText2);
         String text2 = edv2.getText().toString();
-        appInfo.setColor(this, text2);
+        appInfo.setColor(text2);
 
         // Go to second activity
         Intent intent = new Intent(this, SecondActivity.class);
