@@ -13,39 +13,104 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/first_activity_hello" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:text="@string/first_activity_hello"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <Button
-        android:id="@+id/button1"
+
+    <TextView
+        android:id="@+id/textViewS1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="175dp"
-        android:layout_marginLeft="19dp"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="41dp"
+        android:text="@string/label1" />
+
+    <TextView
+        android:id="@+id/textViewS2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewS1"
+        android:layout_marginTop="58dp"
+        android:text="@string/label2" />
+
+    <TextView
+        android:id="@+id/textViewS3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewS2"
+        android:layout_marginTop="63dp"
+        android:text="@string/label3" />
+
+    <TextView
+        android:id="@+id/textViewA2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewS2"
+        android:layout_alignBottom="@+id/textViewS2"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/textView1"
         android:layout_toRightOf="@+id/textView1"
-        android:onClick="goOther"
-        android:text="@string/gostring" />
+        android:text="@string/defaultString"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textViewA3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewS3"
+        android:layout_alignBottom="@+id/textViewS3"
+        android:layout_alignLeft="@+id/textViewA2"
+        android:layout_alignStart="@+id/textViewA2"
+        android:text="@string/defaultString"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="41dp"
-        android:ems="10" />
+        android:layout_alignBaseline="@+id/textViewS1"
+        android:layout_alignBottom="@+id/textViewS1"
+        android:layout_toEndOf="@+id/textView1"
+        android:layout_toRightOf="@+id/textView1"
+        android:ems="10"
+        android:inputType="text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <EditText
-        android:id="@+id/editText2"
+    <Button
+        android:id="@+id/buttonA1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="21dp"
-        android:ems="10" >
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/editText1"
+        android:onClick="setValue1"
+        android:text="@string/enter" />
 
-        <requestFocus />
-    </EditText>
+    <Button
+        android:id="@+id/buttonA2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewA2"
+        android:layout_alignBottom="@+id/textViewA2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:onClick="goA2"
+        android:text="@string/gostring" />
+
+    <Button
+        android:id="@+id/buttonA3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewA3"
+        android:layout_alignBottom="@+id/textViewA3"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:onClick="goA3"
+        android:text="@string/gostring" />
 
 </RelativeLayout>
+

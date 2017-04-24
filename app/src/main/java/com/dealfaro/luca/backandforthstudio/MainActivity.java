@@ -1,63 +1,104 @@
 package com.dealfaro.luca.backandforthstudio;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     static final public String MYPREFS = "myprefs";
-    static final public String PREF_STRING_1 = "string_1";
+   // static final public String PREF_STRING_1 = "string_1";
 
     AppInfo appInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        setTitle("Activity 1 example");
         appInfo = AppInfo.getInstance(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences settings = getSharedPreferences(MainActivity.MYPREFS, 0);
-        String myText = settings.getString(MainActivity.PREF_STRING_1, "");
-        EditText edv = (EditText) findViewById(R.id.editText1);
-        edv.setText(myText);
-
-        EditText edv2 = (EditText) findViewById(R.id.editText2);
-        if (appInfo.sharedString != null) {
-            edv2.setText(appInfo.sharedString);
+        if (appInfo.sharedString1 != null) {
+            EditText edv = (EditText) findViewById(R.id.editText1);
+            edv.setText(appInfo.sharedString1);
+        }
+        TextView txt2 = (TextView)findViewById(R.id.textViewA2);
+        if (appInfo.sharedString2 != null) {
+            txt2.setText(appInfo.sharedString2);
+        }
+        TextView txt3 = (TextView)findViewById(R.id.textViewA3);
+        if (appInfo.sharedString3 != null) {
+            txt3.setText(appInfo.sharedString3);
         }
     }
 
-    public void goOther(View V) {
-        // Grab the text, and store it in a preference.
+    public void setValue1 (View V) {
         EditText edv = (EditText) findViewById(R.id.editText1);
         String text1 = edv.getText().toString();
-        SharedPreferences settings = getSharedPreferences(MYPREFS, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString(PREF_STRING_1, text1);
-        editor.commit();
+        appInfo.setMyText(text1,1);
+    }
 
-        // The second string we store it in the singleton class.
-        EditText edv2 = (EditText) findViewById(R.id.editText2);
-        String text2 = edv2.getText().toString();
-        appInfo.setColor(text2);
+
+    public void goA2(View V) {
+        // Grab the Edit1 text, and store it in the singleton class
+        EditText edv = (EditText) findViewById(R.id.editText1);
+        String text1 = edv.getText().toString();
+        appInfo.setMyText(text1,1);
+
+        // Grab the TextView String2 and store it in the singleton class.
+        TextView txt2 = (TextView)findViewById(R.id.textViewA2);
+        String text2 = txt2.getText().toString();
+        appInfo.setMyText(text2,2);
+
+        // Grab the String 3 TextView string we store it in the singleton class.
+        TextView txt3 = (TextView)findViewById(R.id.textViewA3);
+        String text3 = txt3.getText().toString();
+        appInfo.setMyText(text3,3);
 
         // Go to second activity
         Intent intent = new Intent(this, SecondActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(this, SecondActivity.class);
+    public void goA3(View V) {
+        // Grab the Edit1 text, and store it in the singleton class
+        EditText edv = (EditText) findViewById(R.id.editText1);
+        String text1 = edv.getText().toString();
+        appInfo.setMyText(text1,1);
+
+        // Grab the String 2 TextView string we store it in the singleton class.
+        TextView txt2 = (TextView)findViewById(R.id.textViewA2);
+        String text2 = txt2.getText().toString();
+        appInfo.setMyText(text2,2);
+
+        // Grab the String 3 TextView string we store it in the singleton class.
+        TextView txt3 = (TextView)findViewById(R.id.textViewA3);
+        String text3 = txt3.getText().toString();
+        appInfo.setMyText(text3,3);
+
+        // Go to third activity
+        Intent intent = new Intent(this, ThirdActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
+
+    @Override
+   public void onBackPressed() {
+      //Intent intent = new Intent(this, MainActivity.class);
+      //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+      //startActivity(intent);
+    }
+
+
 
 }

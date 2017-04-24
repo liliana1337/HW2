@@ -9,14 +9,18 @@ import android.content.SharedPreferences;
 public class AppInfo {
 
     private static AppInfo instance = null;
-    private static final String COLOR_NAME = "color2";
+    private static final String STRING1 = "s1";
+    private static final String STRING2 = "s2";
+    private static final String STRING3 = "s3";
 
     protected AppInfo() {
         // Exists only to defeat instantiation.
     }
 
     // Here are some values we want to keep global.
-    public String sharedString;
+    public String sharedString1;
+    public String sharedString2;
+    public String sharedString3;
 
     private Context my_context;
 
@@ -24,18 +28,32 @@ public class AppInfo {
         if(instance == null) {
             instance = new AppInfo();
             instance.my_context = context;
-            SharedPreferences settings = context.getSharedPreferences(MainActivity.MYPREFS, 0);
-            instance.sharedString = settings.getString(COLOR_NAME, null);
+           SharedPreferences settings = context.getSharedPreferences(MainActivity.MYPREFS, 0);
+            instance.sharedString1 = settings.getString(STRING1, null);
+            instance.sharedString2 = settings.getString(STRING2, null);
+            instance.sharedString3 = settings.getString(STRING3, null);
         }
         return instance;
     }
 
-    public void setColor(String c) {
-        instance.sharedString = c;
+    public void setMyText(String c, int x) {
+
         SharedPreferences settings = my_context.getSharedPreferences(MainActivity.MYPREFS, 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString(COLOR_NAME, c);
+        switch(x){
+            case 1: instance.sharedString1 = c;
+                    editor.putString(STRING1, c);
+                    break;
+            case 2: instance.sharedString2 = c;
+                    editor.putString(STRING2, c);
+                    break;
+            case 3: instance.sharedString3 = c;
+                editor.putString(STRING3, c);
+                break;
+        }
+
         editor.commit();
     }
+
 
 }
